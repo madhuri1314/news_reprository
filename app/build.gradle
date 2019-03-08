@@ -1,0 +1,88 @@
+project.ext {
+    support = "1.0.0"
+    constraintlayout = "2.0.0-alpha2"
+    arch = "2.0.0"
+    retrofit = "2.0.2"
+    constraintLayout = "1.0.2"
+    dagger_version = "2.15"
+    glide_version = "4.1.1"
+    room_version = "1.0.0"
+    rx_java_version = "2.0.6"
+    rx_android_version = "2.0.1"
+}
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.2'
+
+    defaultConfig {
+        applicationId "com.test.news"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+
+        debug {
+            debuggable true
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "com.google.android.material:material:$project.support"
+    implementation "androidx.appcompat:appcompat:$project.support"
+    implementation "androidx.cardview:cardview:$project.support"
+    implementation "androidx.recyclerview:recyclerview:$project.support"
+    implementation "androidx.constraintlayout:constraintlayout:$project.constraintlayout"
+    implementation "androidx.legacy:legacy-support-v4:$project.support"
+
+    // Arch
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$project.arch"
+    implementation "androidx.lifecycle:lifecycle-runtime:$project.arch"
+    implementation "androidx.lifecycle:lifecycle-extensions:$project.arch"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$project.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$project.retrofit"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+
+    // Dagger
+    annotationProcessor "com.google.dagger:dagger-android-processor:$dagger_version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation "com.google.dagger:dagger:$project.dagger_version"
+    implementation "com.google.dagger:dagger-android:$project.dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$project.dagger_version"
+    testImplementation 'junit:junit:4.12'
+
+    //Glide
+    implementation "com.github.bumptech.glide:glide:$project.glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$project.glide_version"
+
+    // Room
+    implementation "android.arch.persistence.room:runtime:$project.room_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$project.room_version"
+
+    // rx
+    //mplementation "io.reactivex:rxjava:$project.rx_java_version"
+
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.3'
+
+    // for rxJava
+    implementation "io.reactivex.rxjava2:rxjava:$project.rx_java_version"
+    implementation "io.reactivex.rxjava2:rxandroid:$project.rx_android_version"
+}
